@@ -12,6 +12,7 @@
         <module>example-common</module>
         <module>example-consumer</module>
         <module>example-provider</module>
+        <module>sun-rpc-easy</module>
     </modules>
 
     <properties>

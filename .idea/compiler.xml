@@ -7,6 +7,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="sun-rpc-easy" />
+        <module name="sun-rpc-core" />
         <module name="example-provider" />
         <module name="example-common" />
         <module name="example-consumer" />
