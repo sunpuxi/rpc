@@ -4,11 +4,13 @@ package com.example.sunrpc.server;
  * 请求处理器
  */
 
+import com.example.sunrpc.RpcApplication;
 import com.example.sunrpc.model.RpcRequest;
 import com.example.sunrpc.model.RpcResponse;
 import com.example.sunrpc.registery.LocalRegistry;
 import com.example.sunrpc.serializer.JdkSerializer;
 import com.example.sunrpc.serializer.Serializer;
+import com.example.sunrpc.serializer.SerializerFactory;
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpServerRequest;
@@ -26,7 +28,7 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
     public void handle(HttpServerRequest request) {
 
         // 指定序列化器
-        final Serializer serializer = new JdkSerializer();
+        final Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
 
         // 记录日志
         System.out.println("Received request: " + request.method() + " " + request.uri());

@@ -1,5 +1,6 @@
 package com.example.sunrpc.config;
 
+import com.example.sunrpc.serializer.SerializerKeys;
 import lombok.Data;
 
 /**
@@ -8,6 +9,16 @@ import lombok.Data;
 
 @Data
 public class RpcConfig {
+
+    /**
+     * mock,开启mock后即可调用模拟mock服务。
+     */
+    private Boolean mock = false;
+
+    /**
+     * 序列化器
+     */
+    private String serializer = SerializerKeys.JDK;
 
     /**
      * 名称
@@ -28,6 +39,11 @@ public class RpcConfig {
      * 服务端地址
      */
     private String serverHost = "localhost";
+
+    /**
+     * 注册中心配置
+     */
+    private RegistryConfig registryConfig = new RegistryConfig();
 
 
 }

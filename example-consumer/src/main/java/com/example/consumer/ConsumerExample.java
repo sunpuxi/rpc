@@ -1,7 +1,8 @@
 package com.example.consumer;
 
-import com.example.sunrpc.config.ConfigUtils;
-import com.example.sunrpc.config.RpcConfig;
+import com.example.common.model.User;
+import com.example.common.service.UserService;
+import com.example.sunrpc.procxy.ServiceProxyFactory;
 
 /**
  * @author sunpx
@@ -9,9 +10,18 @@ import com.example.sunrpc.config.RpcConfig;
 public class ConsumerExample {
 
     public static void main(String[] args) {
-        // 从配置文件中读取信息
-        RpcConfig rpcConfig = ConfigUtils.loadConfig(RpcConfig.class,"rpc");
-        System.out.println(rpcConfig);
+        // 获取代理
+        UserService userService = ServiceProxyFactory.getProxy(UserService.class);
+        User user = new User();
+        user.setName("sunpx");
+
+        // 调用
+        User newUser = userService.getUser(user);
+        if(newUser!=null) System.out.println(newUser);
+        else System.out.println("null");
+
+        short number = userService.getNumber();
+        System.out.println(number);
     }
 
 
